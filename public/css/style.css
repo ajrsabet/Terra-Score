@@ -1,35 +1,51 @@
-/* public/styles.css */
-
+/* Ensure the body and html take the full height of the viewport */
+html,
 body {
-    font-family: Arial, sans-serif;
+    height: 100%;
     margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
 }
 
+/* main {
+    flex: 1;
+} */
+
 header {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* Space between logo and nav */
+    /* align-items: center; */
+    /* Vertically align items */
     background-color: #004d40;
+    /* padding: 10px 20px; */
     color: white;
-    padding: 10px 20px;
-    text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+header .logo img {
+    /* display: flex;
+        align-items: left; */
+    height: 100px;
+    width: auto;
 }
 
-nav ul li {
-    margin: 0 15px;
+.nav-bar {
+    margin-left: auto;
 }
 
-nav ul li a {
+.nav-link {
     color: white;
+    /* Ensure nav links are white */
     text-decoration: none;
     font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #00a859;
+    /* Add a green hover effect to nav links */
 }
 
 .hero {
@@ -85,10 +101,11 @@ nav ul li a {
     color: #00796b;
 }
 
+/* Footer styling */
 footer {
     background-color: #004d40;
     color: white;
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
+    margin-top: auto;
 }
