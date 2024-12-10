@@ -5,6 +5,22 @@ const path = require('path');
 
 const PORT = process.env.PORT || 8080;
 
+// Content Security Policy (CSP) configuration
+const helmet = require('helmet');
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://ajax.googleapis.com", "https://cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", "'unsafe-inline'"], // Or use nonce
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", 'data:'],
+        connectSrc: ["'self'", 'https://v6.exchangerate-api.com'],
+        objectSrc: ["'none'"]
+    }
+}));
+
+
 // Set EJS as the templating engine
 app.use(expressLayouts);
 app.set('layout', './layouts/layout');
@@ -18,10 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/', require('./routes/router'));
-
-// app.get('/', (req, res) => {
-//     res.render('index', { title: 'Home Page' });
-// });
 
 // 404 Page
 app.use((req, res) => {
